@@ -30,17 +30,98 @@
     </div>
     <!-- 单元格栏 -->
     <div class="buttonxia">
-      <div>
-        <!-- <van-icon class="iconfont" class-prefix='icon' name='zhiwu' /> -->
-        <van-cell title="霸气值" is-link value="360" icon="weixin" to="/mebaqi"></van-cell>
+      <div class="asdkadk" @click="gobaqizhi">
+        <div class="leftme">
+          <div class="sfjoi">
+            <van-icon size="20" color="#FF7900" name="add" />
+          </div>
+          <span style="margin-left:5px;">霸气值</span>
+        </div>
+        <div class="rightme">
+          <span style="font-size:20px;font-weight:900;color:#FF7900; margin-right:5px;">360</span>
+          <div class="tuba">
+            <van-icon size="20" name="arrow" />
+          </div>
+        </div>
+      </div>
+
+      <!-- <div>
+        <van-cell title="霸气值" is-link value="360" icon="hot-o" url="/pages/mybf/hotstore"></van-cell>
         <van-cell title="官方APP/公众号/小程序" is-link icon="graphic"></van-cell>
       </div>
       <div class="tbhe">
         <van-cell title="官方微信(关注不迷路)" is-link icon="chat"></van-cell>
       </div>
       <div>
-        <van-cell title="推荐有奖" is-link icon="gold-coin" to="/metuij"></van-cell>
+        <van-cell title="推荐有奖" is-link icon="gold-coin" url="/pages/mybf/warn"></van-cell>
         <van-cell title="更多" is-link icon="more"></van-cell>
+      </div>-->
+      <div class="linxian"></div>
+      <div class="asdkadk">
+        <div class="leftme">
+          <div class="sfjoi">
+            <van-icon size="20" color="#48AFDC" name="graphic" />
+          </div>
+          <span style="margin-left:5px;">官方APP/公众号/小程序</span>
+        </div>
+        <div class="rightme">
+          <span
+            style="font-size:15px;font-weight:503px;color:#FF7900; margin-right:5px; margin-top:2px;"
+          ></span>
+          <div class="tuba">
+            <van-icon size="20" name="arrow" />
+          </div>
+        </div>
+      </div>
+      <div class="asdkadk" style="margin-top:15px">
+        <div class="leftme">
+          <div class="sfjoi">
+            <van-icon size="20" color="#01C80A" name="chat" />
+          </div>
+          <span style="margin-left:5px;">官方微信(关注不迷路)</span>
+        </div>
+        <div class="rightme">
+          <span
+            style="font-size:15px;font-weight:350px;color:#FF7900; margin-right:5px; margin-top:2px;"
+          ></span>
+          <div class="tuba">
+            <van-icon size="20" name="arrow" />
+          </div>
+        </div>
+      </div>
+
+      <div class="asdkadk" style="margin-top:15px" @click="gotuijian">
+        <div class="leftme">
+          <div class="sfjoi">
+            <van-icon size="20" color="#FF7900" name="gold-coin" />
+          </div>
+          <span style="margin-left:5px;">推荐有奖</span>
+        </div>
+        <div class="rightme">
+          <span
+            style="font-size:15px;font-weight:700;color:#FF7900; margin-right:5px; margin-top:2px;"
+          ></span>
+          <div class="tuba">
+            <van-icon size="20" name="arrow" />
+          </div>
+        </div>
+      </div>
+      <div class="linxian"></div>
+      <div class="asdkadk">
+        <div class="leftme">
+          <div class="sfjoi">
+            <van-icon size="20" color="#48AFDC" name="more" />
+          </div>
+          <span style="margin-left:5px;">更多</span>
+        </div>
+        <div class="rightme">
+          <span
+            style="font-size:15px;font-weight:700;color:#FF7900; margin-right:5px; margin-top:2px;"
+          ></span>
+          <div class="tuba">
+            <van-icon size="20" name="arrow" />
+          </div>
+        </div>
       </div>
     </div>
     <!-- 固定霸字首页 -->
@@ -78,6 +159,16 @@ export default {
     goinfo() {
       this.$router.push({
         path: "/meinfo"
+      })
+    },
+    gobaqizhi() {
+      this.$router.push({
+        path: "/mebaqi"
+      })
+    },
+    gotuijian() {
+      this.$router.push({
+        path: "/metuij"
       })
     }
   }
@@ -183,8 +274,56 @@ export default {
     background-color: #eeeeee;
     width: 100%;
     height: 340px;
-    .tbhe {
-      margin: 20px 0;
+    .asdkadk {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 50px;
+      font-size: 15px;
+      box-sizing: border-box;
+      padding: 0 15px;
+      background-color: #ffff;
+      .rightme {
+        width: 30%;
+        span {
+          position: absolute;
+          right: 20px;
+          top: 2px;
+        }
+        .tuba {
+          position: absolute;
+          right: 0px;
+          top: 5px;
+        }
+      }
+      .leftme {
+        width: 70%;
+        span {
+          position: absolute;
+          left: 20px;
+          top: 4px;
+        }
+        .sfjoi {
+          position: absolute;
+          left: 0rpx;
+          top: 5px;
+        }
+      }
+      .rightme,
+      .leftme {
+        position: relative;
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    .linxian {
+      width: 100%;
+      height: 1px;
+      background-color: #ccc;
+      margin-left: 15px;
     }
   }
 }

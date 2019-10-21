@@ -125,7 +125,7 @@
                     </div>
                     <div>炫耀一下</div>
                   </div>
-                </div> -->
+                </div>-->
 
                 <!--小字 -->
                 <div class="xiaozihah">为你准备了如下福利</div>
@@ -134,7 +134,13 @@
                   <div class="xiaopinhe" style="margin-left:10px">
                     <!-- 内部详情 -->
                     <div class="liwulo">
-                      <!-- <image src /> -->
+                      <van-icon
+                        class="iconfont"
+                        class-prefix="icon"
+                        size="30"
+                        color="#FF7C09"
+                        name="yuxiaxie"
+                      />
                     </div>
                     <div class="liyiya">聚好礼享中秋</div>
                     <div class="lierya">大闸蟹月饼0元拿</div>
@@ -143,7 +149,7 @@
                   <div class="xiaopinhe" style="margin-right:10px; border:1px solid #CFCFCF">
                     <!-- 内部详情 -->
                     <div class="liwulo">
-                      <!-- <image src /> -->
+                      <van-icon size="30" color=" #ccc" name="point-gift" />
                     </div>
                     <div class="liyiya">抽奖助手送给 奔跑的老王</div>
                     <div class="lierya">大闸蟹月饼0元拿</div>
@@ -529,7 +535,6 @@ export default {
                 width: 25px;
                 height: 25px;
                 border-radius: 50%;
-                background-color: pink;
               }
               .liyiya {
                 top: 49px;

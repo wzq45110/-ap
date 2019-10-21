@@ -21,7 +21,10 @@
           <div>9月2日10: 00自动开奖</div>
         </div>
         <router-link :to="item.yanse">
-          <div class="rightyou">{{item.test}}</div>
+          <div
+            class="rightyou"
+            :style="{'background-color': item.test === '去看看' ? '#ff7900' :  '#ccc'}"
+          >{{item.test}}</div>
         </router-link>
       </div>
     </div>
@@ -123,7 +126,7 @@ export default {
         height: 25px;
         line-height: 25px;
         text-align: center;
-        background-color: #ff7900;
+        // background-color: #ff7900;
         border-radius: 7.5px;
         color: #fff;
       }
