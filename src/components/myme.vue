@@ -153,7 +153,7 @@ export default {
   methods: {
     gohomre() {
       this.$router.push({
-        path: "/"
+        path: "/home"
       })
     },
     goinfo() {

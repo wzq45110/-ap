@@ -18,12 +18,32 @@ import Activew from './components/active/activew.vue'
 import Activedui from './components/active/activedui.vue'
 import Activedre from './components/active/activedre.vue'
 import Mainac from './components/active/mainac.vue'
+import Login from './components/login'
+import Zhuce from './components/zhuce'
+import Forget from './components/forget'
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
+      redirect: '/login'
+    },
+    {
+      path: '/login',
+      component: Login
+    },
+    {
+      path: '/forget',
+      component: Forget
+    },
+    {
+      path: '/zhuce',
+      name: 'zhuce',
+      component: Zhuce
+    },
+    {
+      path: '/home',
       name: 'home',
       component: Home
     },
@@ -122,3 +142,17 @@ export default new Router({
     // }
   ]
 })
+// 挂载路由导航守卫
+router.beforeEach((to, from, next) => {
+  // to 将要访问的路径
+  // from 代表从哪个路径跳转而来
+  // next 是一个函数，表示放行
+  //     next()  放行    next('/login')  强制跳转
+
+  if (to.path === '/login') return next()
+  // 获取token
+  const tokenStr = window.sessionStorage.getItem('token')
+  if (!tokenStr) return next('/login')
+  next()
+})
+export default router
