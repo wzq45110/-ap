@@ -20,33 +20,34 @@
     </div>
     <!-- 轮播图区域 -->
     <div class="lunbo">
-      <van-swipe :autoplay="3000" indicator-color="white">
+      <van-swipe :autoplay="3000" indicator-color="#1989fa">
         <van-swipe-item>
-          <img src="../assets/images/swip.png" alt />
+          <img src="guanggaolist[0].img_thumb" alt />
         </van-swipe-item>
         <van-swipe-item>
-          <img src="../assets/images/swip.png" alt />
+          <img src="guanggaolist[1].img_thumb" alt />
         </van-swipe-item>
         <van-swipe-item>
-          <img src="../assets/images/swip.png" alt />
+          <img src="guanggaolist[2].img_thumb" alt />
         </van-swipe-item>
         <van-swipe-item>
-          <img src="../assets/images/swip.png" alt />
+          <img src="guanggaolist[3].img_thumb" alt />
         </van-swipe-item>
       </van-swipe>
     </div>
     <!-- 内容区域 -->
     <div class="baoguode">
-      <div class="wepjiang" v-for="(item, index) in mainaxrelist" :key="index">
+      <!-- {{guanggaolist[4].cate_id}} -->
+      <div class="wepjiang" v-for="(item, index) in arrnew" :key="index">
         <!-- 图片区域 -->
         <div class="pic">
           <!-- <img  alt=""> -->
-          <img src="../assets/images/logoo1_02.png" alt />
+          <img :src="item.img_thumb" alt />
         </div>
         <!-- 文字区域 -->
         <div class="textp">
           <div style="font-size:20px;">
-            巨无霸双人汉堡
+            {{item.title}}
             <van-icon name="cross" />30
           </div>
           <div style="color:#ccc; font-size:10px;">
@@ -137,10 +138,16 @@ export default {
         { image_src: "../assets/images/logoo1_02.png" },
         { image_src: "../assets/images/logoo_02.png" },
         { image_src: "../assets/images/logoo_02.png" }
-      ]
+      ],
+      // 获取首页广告
+      guanggaolist: [],
+      arrnew: ""
     }
   },
-  created() {},
+  created() {
+    // 页面一加载获取首页数据
+    this.getpic()
+  },
   methods: {
     showPopup() {
       this.show = true
@@ -153,6 +160,32 @@ export default {
       this.$router.push({
         path: "/fenbaxa"
       })
+    },
+    // 请求首页广告位广告 (图片不显示)
+    async getpic() {
+      const { data: res } = await this.$http.get("Ad/lists")
+      console.log(res)
+      if (res.status !== 10001) return this.$toast("获取列表失败")
+      this.guanggaolist = res.lists
+      let newedui = {
+        item: 4,
+        item1: 5,
+        item2: 6,
+        item3: 7
+      }
+      let arrnew = []
+      for (let i = 0; i < res.lists.length; i++) {
+        if (
+          i != newedui.item &&
+          i != newedui.item1 &&
+          i != newedui.item2 &&
+          i != newedui.item3
+        ) {
+          arrnew.push(res.lists[i])
+        }
+      }
+      console.log(arrnew)
+      this.arrnew = arrnew
     }
   }
 }

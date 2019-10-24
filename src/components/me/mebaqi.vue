@@ -12,11 +12,11 @@
       <div class="shzhi">
         <div>
           今日已获得:
-          <span style="color:orange; font-size:15px; font-weight:400">15</span>
+          <span style="color:orange; font-size:15px; font-weight:400">{{objpoint.point_today}}</span>
         </div>
         <div style="margin-right:20px;">
           总霸气值:
-          <span style="color:orange; font-size:15px; font-weight:400">360</span>
+          <span style="color:orange; font-size:15px; font-weight:400">{{objpoint.points}}</span>
         </div>
       </div>
       <div class="xiahi">
@@ -150,36 +150,25 @@ export default {
           testt_4: "去下载"
         }
       ],
-      checked: false
-      // steps: [
-      //   {
-      //     desc: "第一天"
-      //   },
-      //   {
-      //     text: "第二天"
-      //   },
-      //   {
-      //     text: "第三天"
-      //   },
-      //   {
-      //     text: "第四天"
-      //   },
-      //   {
-      //     text: "第五天"
-      //   },
-      //   {
-      //     text: "第六天"
-      //   },
-      //   {
-      //     text: "第七天"
-      //   }
-      // ]
+      checked: false,
+      //霸气总值 和今日值 存储
+      objpoint: {}
     }
   },
-  created() {},
+  created() {
+    // 页面刷新就更新数据
+    this.getbaqiuzhi()
+  },
   methods: {
     gobackkk() {
       this.$router.go(-1)
+    },
+    //调用户霸气值数据
+    async getbaqiuzhi() {
+      const { data: res } = await this.$http.get("UserPoint/detail")
+      console.log(res)
+      if (res.status !== 10001) return this.$toast("获取数据失败")
+      this.objpoint = res.detail
     }
   }
 }

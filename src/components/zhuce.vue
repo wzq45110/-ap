@@ -74,6 +74,7 @@
       class="buttontt"
       :style="{'background-color': checked ? '#FF7900':'#ccc'}"
       :disabled=" infoiphone.phone === '' ||  infoiphone.type ===''  || possword ==='' ||  newpossword === ''  ? true : false"
+      @click="zhuceuse"
     >注册账号</button>
     <!-- 文字 -->
     <div class="wenzi">收不到短信</div>
@@ -89,13 +90,15 @@ export default {
       infoiphone: {
         // 即账号
         phone: "",
-        // 验证码
+        // 验证码 number
         type: ""
       },
       // 密码
       possword: "",
       // 新密码
-      newpossword: ""
+      newpossword: "",
+      // 获取验证码的code值
+      code: ""
     }
   },
   created() {
@@ -121,7 +124,6 @@ export default {
       }
     },
     // 触发获取短信 调用接口
-
     async getduanxin() {
       // let post = {
       //   phone: this.phone
@@ -132,7 +134,27 @@ export default {
       )
       console.log(res)
       if (res.status !== 10001) return this.$toast.fail("获取失败")
-      // 发送成功之后\
+      // 发送成功之后
+      console.log(res.arr.url)
+      let urlarr = res.arr.url.split("=")
+      // 验证码提取赋值
+      this.code = urlarr[6]
+        .split("&")[0]
+        .split(":")[1]
+        .substring(0, 6)
+    },
+    //点击注册账号 发起请求 (此段还未完成 邀请码不知道多少)
+    async zhuceuse() {
+      let post = {
+        loginname: this.infoiphone.phone,
+        password: this.possword,
+        re_password: this.newpossword,
+        code: this.code
+      }
+      const { data: res } = await this.$http.post("Reg/reg", {
+        post: JSON.stringify(post)
+      })
+      console.log(res)
     }
   }
 }

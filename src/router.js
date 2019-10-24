@@ -21,6 +21,7 @@ import Mainac from './components/active/mainac.vue'
 import Login from './components/login'
 import Zhuce from './components/zhuce'
 import Forget from './components/forget'
+import About from './components/qita/about.vue'
 Vue.use(Router)
 
 const router = new Router({
@@ -131,6 +132,11 @@ const router = new Router({
       path: '/mainc',
       name: 'mainac',
       component: Mainac
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
     }
     // {
     //   path: '/about',

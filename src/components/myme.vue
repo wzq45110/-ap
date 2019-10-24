@@ -8,11 +8,11 @@
     <div class="mymaintop">
       <div class="leftpic">
         <div class="picnei">
-          <van-icon name="manager" />
+          <img :src="getuserinforobj.headimgurl" alt />
         </div>
-        <div style="color:white; text-align: center;" class="ziti">用户名</div>
+        <div style="color:white; text-align: center;" class="ziti">{{getuserinforobj.username}}</div>
       </div>
-      <div class="rightpeo" @click="goinfo">
+      <div class="rightpeo" @click="goinfo(getuserinforobj)">
         <div>个人资料</div>
         <div>
           <van-icon color="wihte" name="arrow" />
@@ -38,7 +38,9 @@
           <span style="margin-left:5px;">霸气值</span>
         </div>
         <div class="rightme">
-          <span style="font-size:20px;font-weight:900;color:#FF7900; margin-right:5px;">360</span>
+          <span
+            style="font-size:20px;font-weight:900;color:#FF7900; margin-right:5px;"
+          >{{getuserinforobj.points}}</span>
           <div class="tuba">
             <van-icon size="20" name="arrow" />
           </div>
@@ -73,7 +75,7 @@
           </div>
         </div>
       </div>
-      <div class="asdkadk" style="margin-top:15px">
+      <div class="asdkadk" style="margin-top:10px">
         <div class="leftme">
           <div class="sfjoi">
             <van-icon size="20" color="#01C80A" name="chat" />
@@ -90,7 +92,7 @@
         </div>
       </div>
 
-      <div class="asdkadk" style="margin-top:15px" @click="gotuijian">
+      <div class="asdkadk" style="margin-top:10px" @click="gotuijian">
         <div class="leftme">
           <div class="sfjoi">
             <van-icon size="20" color="#FF7900" name="gold-coin" />
@@ -107,12 +109,12 @@
         </div>
       </div>
       <div class="linxian"></div>
-      <div class="asdkadk">
+      <div class="asdkadk" @click="goabout">
         <div class="leftme">
           <div class="sfjoi">
             <van-icon size="20" color="#48AFDC" name="more" />
           </div>
-          <span style="margin-left:5px;">更多</span>
+          <span style="margin-left:5px;">关于霸王到</span>
         </div>
         <div class="rightme">
           <span
@@ -142,6 +144,8 @@ export default {
   data() {
     return {
       active: 2,
+      // 接受获取过来的对象
+      getuserinforobj: {},
       daolist: [
         { number_i: 3, test: "我的保中", url_to: "/mebaoz" },
         { number_i: 5, test: "我参与的", url_to: "" },
@@ -149,16 +153,23 @@ export default {
       ]
     }
   },
-  created() {},
+  created() {
+    this.getuserinfor()
+  },
   methods: {
     gohomre() {
       this.$router.push({
         path: "/home"
       })
     },
-    goinfo() {
+    // 跳转并且传值 (个人信息)
+    goinfo(val) {
       this.$router.push({
         path: "/meinfo"
+        // name: "meinfo",
+        // params: {
+        //   userinfo: val
+        // }
       })
     },
     gobaqizhi() {
@@ -170,6 +181,25 @@ export default {
       this.$router.push({
         path: "/metuij"
       })
+    },
+    goabout() {
+      this.$router.push({
+        path: "/about"
+      })
+    },
+    // 获取用户详情信息
+    async getuserinfor() {
+      // 取出token
+      let trs = window.sessionStorage.getItem("token")
+      // 获取个人信息要携带token 值
+      const { data: res } = await this.$http.get("User/detail", {
+        params: { token: trs }
+      })
+      console.log(res)
+      if (res.status !== 10001) return this.$toast("获取用户数据失败")
+      this.getuserinforobj = res.detail
+      // // 将获取到的用户数据存储在本地 供个人资料页面用
+      // window.sessionStorage.setItem("userinfo", res.detail)
     }
   }
 }
@@ -217,7 +247,7 @@ export default {
     display: flex;
     justify-content: space-between;
     padding-top: 15px;
-    height: 150px;
+    height: 120px;
     width: 100%;
     margin-top: 80px;
     background-color: #ff7900;
@@ -229,6 +259,12 @@ export default {
       .picnei {
         background-color: #eeeeee;
         border-radius: 50%;
+        img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          border-radius: 50%;
+        }
       }
       .ziti,
       .picnei {
@@ -257,11 +293,11 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    top: 95px;
+    top: 90px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    height: 120px;
+    height: 110px;
     background-color: #fff;
     border-radius: 10px;
     // box-shadow: 5rpx 5rpx 5rpx;
@@ -270,10 +306,10 @@ export default {
     }
   }
   .buttonxia {
-    padding-top: 70px;
+    padding-top: 75px;
     background-color: #eeeeee;
     width: 100%;
-    height: 340px;
+    height: 320px;
     .asdkadk {
       display: flex;
       justify-content: space-between;

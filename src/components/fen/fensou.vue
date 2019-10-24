@@ -8,11 +8,11 @@
       <div class="yiuiui">收获地址</div>
     </div>
     <!-- 具体内容 -->
-    <div class="morendre" v-for="(item, index) in list1" :key="index">
+    <div class="morendre" v-for="(item, index) in getadree" :key="index">
       <!-- 隔条 -->
       <div class="tiaoge"></div>
       <div>
-        <van-cell title="包小花" value="13756433298" size="large" label="上海市浦东新区张家玮电子1号楼201室" />
+        <van-cell :title="item.name" :value="item.phone" size="large" :label="item.address" />
         <div class="biande">
           <!-- 左侧 -->
           <div class="leftzuo">
@@ -44,10 +44,15 @@ export default {
     return {
       // color: "orange",
       // borde: "none",
-      list1: [1, 2]
+      list1: [1, 2],
+      // 存放数据列表
+      getadree: []
     }
   },
-  created() {},
+  created() {
+    //调用请求获取地址列表
+    this.grtadress()
+  },
   methods: {
     // colorbian() {
     //   this.color = !this.color
@@ -60,6 +65,16 @@ export default {
     },
     gobackkk() {
       this.$router.go(-1)
+    },
+    // 发送请求获取地址列表
+    async grtadress() {
+      let trss = window.sessionStorage.getItem("token")
+      const { data: res } = await this.$http.get("UserAddress/lists", {
+        params: { token: trss }
+      })
+      console.log(res)
+      if (res.status !== 10001) return this.$toast("获取失败")
+      this.getadree = res.lists
     }
   }
 }
@@ -94,7 +109,7 @@ export default {
   }
   .morendre {
     width: 100%;
-    height: 150px;
+    height: 80px;
     // background-color: pink;
     margin-top: 80px;
     .tiaoge {

@@ -76,7 +76,7 @@ export default {
     },
     gomima() {
       this.$router.push({
-        path: "/forget"
+        path:'/forget'
       })
     },
     // 点击登陆按钮
