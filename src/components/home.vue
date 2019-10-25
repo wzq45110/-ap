@@ -21,18 +21,18 @@
     <!-- 轮播图区域 -->
     <div class="lunbo">
       <van-swipe :autoplay="3000" indicator-color="#1989fa">
-        <van-swipe-item>
-          <img src="guanggaolist[0].img_thumb" alt />
+        <van-swipe-item v-for="(item,index) in arrold" :key="index">
+          <img :src="item.img_thumb" alt />
+        </van-swipe-item>
+        <!-- <van-swipe-item>
+          <img src="guanggaolist[1].img_orogin" alt />
         </van-swipe-item>
         <van-swipe-item>
-          <img src="guanggaolist[1].img_thumb" alt />
+          <img src="guanggaolist[2].img_orogin" alt />
         </van-swipe-item>
         <van-swipe-item>
-          <img src="guanggaolist[2].img_thumb" alt />
-        </van-swipe-item>
-        <van-swipe-item>
-          <img src="guanggaolist[3].img_thumb" alt />
-        </van-swipe-item>
+          <img src="guanggaolist[3].img_orogin" alt />
+        </van-swipe-item>-->
       </van-swipe>
     </div>
     <!-- 内容区域 -->
@@ -140,8 +140,8 @@ export default {
         { image_src: "../assets/images/logoo_02.png" }
       ],
       // 获取首页广告
-      guanggaolist: [],
-      arrnew: ""
+      arrold: [],
+      arrnew: []
     }
   },
   created() {
@@ -166,13 +166,14 @@ export default {
       const { data: res } = await this.$http.get("Ad/lists")
       console.log(res)
       if (res.status !== 10001) return this.$toast("获取列表失败")
-      this.guanggaolist = res.lists
+      // this.guanggaolist = res.lists
       let newedui = {
         item: 4,
         item1: 5,
         item2: 6,
         item3: 7
       }
+      let arrold = []
       let arrnew = []
       for (let i = 0; i < res.lists.length; i++) {
         if (
@@ -182,9 +183,13 @@ export default {
           i != newedui.item3
         ) {
           arrnew.push(res.lists[i])
+        } else {
+          arrold.push(res.lists[i])
         }
       }
       console.log(arrnew)
+      console.log(arrold)
+      this.arrold = arrold
       this.arrnew = arrnew
     }
   }
