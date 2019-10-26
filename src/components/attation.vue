@@ -220,6 +220,7 @@ export default {
   .shangguan {
     width: 100%;
     height: 100px;
+    box-sizing: border-box;
     // background-color: pink;
     display: flex;
     justify-content: start;

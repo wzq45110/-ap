@@ -117,6 +117,8 @@ export default {
         code: this.code
         // code_id: this.codeid
       }
+      // 获取token
+      // let tokenStr = window.sessionStorage.getItem("token")
       const { data: res } = await this.$http.post("Login/reget_password", {
         post: JSON.stringify(post),
         code_id: this.codeid

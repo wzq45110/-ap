@@ -183,7 +183,7 @@
                   </div>
                 </div>
                 <!-- 2栏 -->
-                <div class="listquyu" style="top:650px;">
+                <div class="listquyu" style="top:717px;">
                   <div class="shangzhe">
                     奖品: MAC 口红任意色号一支
                     <van-icon color="#FF7900" name="cross" />
@@ -212,17 +212,17 @@
 
         <!--图文区域 -->
         <div class="tuwenbain">
-          <div class="htou">团购详情及文字说明部分</div>
+          <!-- <div class="htou">团购详情及文字说明部分</div>
           <div class="zxjg">有效期文字内容</div>
           <div class="zxjg">当天营业时间</div>
-          <div class="zxjg">使用规则~~~~~~</div>
+          <div class="zxjg">使用规则~~~~~~</div>-->
           <!-- 点击按钮 -->
-          <div class="niubj">
-            <!-- <div class="haojiang" style="margin-left:120rpx;">抽 奖</div>
-            <div class="haojiang" style="margin-right:120rpx;">保 中</div>-->
-            <button class="haojiang" style="margin-left:60px" @click="showPopupjiang">抽 奖</button>
-            <button class="haojiang" style="margin-right:60px" @click="showPopup">保 中</button>
-          </div>
+          <!-- <div class="niubj"> -->
+          <!-- <div class="haojiang" style="margin-left:120rpx;">抽 奖</div>
+          <div class="haojiang" style="margin-right:120rpx;">保 中</div>-->
+          <!-- <button class="haojiang" style="margin-left:60px" @click="showPopupjiang">抽 奖</button>
+          <button class="haojiang" style="margin-right:60px" @click="showPopup">保 中</button>-->
+          <!-- </div> -->
           <!-- 小文字 -->
           <div class="xiaowenz">
             已有
@@ -276,74 +276,13 @@
       </div>
     </div>
     <!-- 弹出层 保中成功内容 -->
-    <van-popup v-model="show" click-overlay="onClose" round closeable close-icon="close">
-      <div class="gongsucess">
-        <div class="shangsuche">恭喜, 保中成功</div>
-        <div class="jingdeng">静等开奖吧！</div>
-        <div class="guanzhgugg">
-          关注《
-          <span style="color:#ff9131">深圳霸王到</span>》公众号
-        </div>
-        <div class="tongzhi">获取最新霸王餐信息，不错过中奖通知。</div>
-        <!--二维码区域 -->
-        <div class="weimam">
-          <img src="../../assets/images/erma.png" alt />
-        </div>
-        <div class="xiaxiao">扫一扫关注公众号</div>
-      </div>
-    </van-popup>
-
-    <!-- 弹出层 保中失败内容 -->
-    <van-popup v-model="show" click-overlay="onClose" round closeable close-icon="close">
-      <div class="gongsucess" style="border:5px solid #CCCECE;">
-        <div class="shangsuche" style="color:#666666">遗憾, 保中失败</div>
-        <div class="xinjiaba">抱歉,你的霸气值不足,无法保中</div>
-        <div class="jingdeng" style="top:75px;font-size:10px">
-          去获取霸气值
-          <van-icon name="arrow" color="#ff9131" />
-        </div>
-        <div class="guanzhgugg">
-          关注《
-          <span style="color:#ff9131">深圳霸王到</span>》公众号
-        </div>
-        <div class="tongzhi">获取最新霸王餐信息，不错过中奖通知。</div>
-        <!--二维码区域 -->
-        <div class="weimam">
-          <img src="../../assets/images/erma.png" alt />
-        </div>
-        <div class="xiaxiao">扫一扫关注公众号</div>
-      </div>
-    </van-popup>
-
-    <!-- 弹出层 抽奖参与成功 -->
-    <van-popup v-model="showw" click-overlay="onClose" round closeable close-icon="close">
-      <div class="gongsucess">
-        <div
-          class="shangsuche"
-          style="background-color:#ff7900; width: 70%; color:#ffffff; border-radius:10px"
-        >参与成功</div>
-        <div class="guanzhgugg">
-          关注《
-          <span style="color:#ff9131">深圳霸王到</span>》公众号
-        </div>
-        <div class="tongzhi">获取最新霸王餐信息，不错过中奖通知。</div>
-        <!--二维码区域 -->
-        <div class="weimam">
-          <img src="../../assets/images/erma.png" alt />
-        </div>
-        <div class="xiaxiao">扫一扫关注公众号</div>
-      </div>
-    </van-popup>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-      show: false,
-      showw: false
-    }
+    return {}
   },
   created() {},
   methods: {
@@ -354,18 +293,6 @@ export default {
     },
     goback() {
       this.$router.go(-1)
-    },
-    showPopup() {
-      this.show = true
-    },
-    showPopupjiang() {
-      this.showw = true
-    },
-    onClose() {
-      this.show = this.showw = false
-      this.$router.push({
-        path: "/"
-      })
     }
   }
 }
@@ -687,34 +614,34 @@ export default {
         background-color: #fff;
         width: 100%;
         //   height: 600rpx;
-        margin-bottom: 15px;
-        .htou {
-          width: 100%;
-          height: 50px;
-          line-height: 50px;
-          text-align: center;
-        }
-        .zxjg {
-          margin: 0 15px 25px 15px;
-        }
-        .niubj {
-          display: flex;
-          justify-content: space-around;
-          width: 100%;
-          height: 115px;
-          .haojiang {
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
-            text-align: center;
-            background-color: #ff9801;
-            border-radius: 50%;
-            color: #fff;
-            box-shadow: #ff7900;
-            font-size: 30px;
-            font-weight: 900;
-          }
-        }
+        // margin-bottom: 15px;
+        // .htou {
+        //   width: 100%;
+        //   height: 50px;
+        //   line-height: 50px;
+        //   text-align: center;
+        // }
+        // .zxjg {
+        //   margin: 0 15px 25px 15px;
+        // }
+        // .niubj {
+        //   display: flex;
+        //   justify-content: space-around;
+        //   width: 100%;
+        //   height: 115px;
+        //   .haojiang {
+        //     width: 100px;
+        //     height: 100px;
+        //     line-height: 100px;
+        //     text-align: center;
+        //     background-color: #ff9801;
+        //     border-radius: 50%;
+        //     color: #fff;
+        //     box-shadow: #ff7900;
+        //     font-size: 30px;
+        //     font-weight: 900;
+        //   }
+        // }
         .xiaowenz {
           width: 100%;
           height: 40px;
@@ -785,9 +712,9 @@ export default {
           }
         }
         .shuoming {
+          box-sizing: border-box;
           font-size: 12px;
-          // margin-top: 10px;
-          margin-left: 40px;
+          padding: 5px 10px 5px 60px;
         }
       }
     }

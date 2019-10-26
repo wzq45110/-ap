@@ -65,7 +65,7 @@
           :disabled="infoiphone.phone === '' ||  infoiphone.type ===''  || possword ==='' ||  newpossword === ''  ? true : false"
         >点击注册代表您同意</van-checkbox>
       </span>
-      <span style="color:#FF7900">《霸王到用户服务条款》</span>
+      <span style="color:#FF7900" @click="gohomenei">《霸王到用户服务条款》</span>
     </div>
 
     <!-- 注册按钮 -->
@@ -112,6 +112,12 @@ export default {
       if (!(this.possword === this.newpossword)) {
         return this.$toast("两次密码不同")
       }
+    },
+    // 去条款页面
+    gohomenei() {
+      this.$router.push({
+        path: "/sertiao"
+      })
     },
     sdosdj() {
       if (

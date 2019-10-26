@@ -147,14 +147,17 @@ export default {
       // 接受获取过来的对象
       getuserinforobj: {},
       daolist: [
-        { number_i: 3, test: "我的保中", url_to: "/mebaoz" },
-        { number_i: 5, test: "我参与的", url_to: "" },
-        { number_i: 2, test: "中奖纪录", url_to: "" }
+        { number_i: "", test: "我的保中", url_to: "/mebaoz" },
+        { number_i: "", test: "我参与的", url_to: "" },
+        { number_i: "", test: "中奖纪录", url_to: "" }
       ]
     }
   },
   created() {
+    // 调用用户详情
     this.getuserinfor()
+    // 调用保中 参与 中奖 接口 返回
+    this.lokkeruser()
   },
   methods: {
     gohomre() {
@@ -187,6 +190,20 @@ export default {
         path: "/about"
       })
     },
+    // 保中 参与 中奖 接口 返回
+    async lokkeruser() {
+      // 取出token
+      let trs = window.sessionStorage.getItem("token")
+      const { data: res } = await this.$http.post("LotteryUser/detail", {
+        params: { token: trs }
+      })
+      console.log("-----", res)
+      if (res.status !== 10001) return this.$toast("获取用户数据失败")
+      this.daolist[0].number_i = res.detail.baozhong
+      this.daolist[1].number_i = res.detail.partake_num
+      this.daolist[2].number_i = res.detail.win_num
+    },
+
     // 获取用户详情信息
     async getuserinfor() {
       // 取出token
@@ -359,7 +376,9 @@ export default {
       width: 100%;
       height: 1px;
       background-color: #ccc;
-      margin-left: 15px;
+      // box-sizing: border-box;
+      // // margin-left: 15px;
+      // padding-left: 15px;
     }
   }
 }

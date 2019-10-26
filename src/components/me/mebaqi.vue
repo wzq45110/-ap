@@ -14,7 +14,7 @@
           今日已获得:
           <span style="color:orange; font-size:15px; font-weight:400">{{objpoint.point_today}}</span>
         </div>
-        <div style="margin-right:20px;">
+        <div style="margin-right:10px;">
           总霸气值:
           <span style="color:orange; font-size:15px; font-weight:400">{{objpoint.points}}</span>
         </div>
@@ -211,18 +211,19 @@ export default {
     }
     .shzhi,
     .xiahi {
+      box-sizing: border-box;
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
       height: 60px;
-      padding: 0 10px;
+      padding: 0 20px;
     }
     .biao {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-right: 20px;
+      // margin-right: 20px;
     }
   }
   .houmian {
@@ -261,10 +262,11 @@ export default {
       background-color: #fff;
       margin-top: 30px;
       .diyiday {
+        box-sizing: border-box;
+        padding-left: 20px;
         width: 100%;
         height: 50px;
         line-height: 50px;
-        margin-left: 20px;
         font-weight: 900;
       }
       .wenzih {
@@ -282,7 +284,7 @@ export default {
           text-align: center;
           width: 140px;
           border-radius: 10px;
-          margin-right: 35px;
+          margin-right: 20px;
         }
         .leftjia {
           display: flex;
@@ -290,7 +292,8 @@ export default {
           justify-content: space-between;
           width: 500px;
           height: 50px;
-          margin-left: 20px;
+          box-sizing: border-box;
+          padding-left: 20px;
           .xaiozi {
             color: #b2b2b2;
             font-size: 10px;

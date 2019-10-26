@@ -26,7 +26,7 @@
             <div class="tuleft">
               <van-icon name="edit" />编辑
             </div>
-            <div class="turight">
+            <div class="turight" @click="deletel(item.id)">
               <van-icon name="delete" />删除
             </div>
           </div>
@@ -46,7 +46,9 @@ export default {
       // borde: "none",
       list1: [1, 2],
       // 存放数据列表
-      getadree: []
+      getadree: [],
+      // 存储地址的id
+      address_id: ""
     }
   },
   created() {
@@ -75,6 +77,26 @@ export default {
       console.log(res)
       if (res.status !== 10001) return this.$toast("获取失败")
       this.getadree = res.lists
+      // this.address_id = res.lists.id
+    },
+    // 点击删除按钮后触发
+    deletel(id) {
+      this.$dialog
+        .confirm({
+          title: "提示",
+          message: "是否确认删除"
+        })
+        .then(async () => {
+          // on confirm 确认时候触发 请求删除接口
+          const { data: res } = await this.$http.post("UserAddress/delete", {
+            address_id: id
+          })
+          console.log(res)
+          if (res.status !== 10001) return this.$toast("操作失败！")
+          // 当删除成功后就立刻在此重新获取数据列表 重新渲染列表
+          this.grtadress()
+        })
+        .catch()
     }
   }
 }

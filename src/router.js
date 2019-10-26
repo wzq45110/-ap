@@ -21,7 +21,8 @@ import Mainac from './components/active/mainac.vue'
 import Login from './components/login'
 import Zhuce from './components/zhuce'
 import Forget from './components/forget'
-import About from './components/qita/about.vue'
+import About from './components/qita/about'
+import Sertiao from './components/qita/sertiao'
 Vue.use(Router)
 
 const router = new Router({
@@ -137,6 +138,11 @@ const router = new Router({
       path: '/about',
       name: 'about',
       component: About
+    },
+    {
+      path: '/sertiao',
+      name: 'sertiao',
+      component: Sertiao
     }
     // {
     //   path: '/about',
@@ -155,7 +161,7 @@ router.beforeEach((to, from, next) => {
   // next 是一个函数，表示放行
   //     next()  放行    next('/login')  强制跳转
 
-  if (to.path === '/login' || to.path === '/forget' || to.path === '/zhuce') return next()
+  if (to.path === '/login' || to.path === '/forget' || to.path === '/zhuce' || to.path === '/sertiao') return next()
 
   // 获取token
   const tokenStr = window.sessionStorage.getItem('token')

@@ -74,7 +74,14 @@
             <div class="zuodinzhi">
               <div>
                 肯德基(西乡店)
-                <van-tag round plain color="#FF7901" text-color="#FF7901" type="warning" click="goshanghu">+ 关注</van-tag>
+                <van-tag
+                  round
+                  plain
+                  color="#FF7901"
+                  text-color="#FF7901"
+                  type="warning"
+                  click="goshanghu"
+                >+ 关注</van-tag>
               </div>
               <div style="font-size:12px; color:#717171;">深圳市罗湖区文锦路13号楼 3号 一侧吧</div>
               <div style="font-size:10px; color:#ccc;">
@@ -158,7 +165,14 @@
       </div>
     </div>
     <!-- 弹出层 保中成功内容 -->
-    <van-popup v-model="show" click-overlay="onClose" round closeable close-icon="close">
+    <van-popup
+      v-model="show"
+      @click-overlay="onClose"
+      @close="onClose"
+      round
+      closeable
+      close-icon="close"
+    >
       <div class="gongsucess">
         <div class="shangsuche">恭喜, 保中成功</div>
         <div class="jingdeng">静等开奖吧！</div>
@@ -176,7 +190,7 @@
     </van-popup>
 
     <!-- 弹出层 保中失败内容 -->
-    <van-popup v-model="show" click-overlay="onClose" round closeable close-icon="close">
+    <van-popup @click-overlay="onClose" round closeable close-icon="close">
       <div class="gongsucess" style="border:5px solid #CCCECE;">
         <div class="shangsuche" style="color:#666666">遗憾, 保中失败</div>
         <div class="xinjiaba">抱歉,你的霸气值不足,无法保中</div>
@@ -198,7 +212,14 @@
     </van-popup>
 
     <!-- 弹出层 抽奖参与成功 -->
-    <van-popup v-model="showw" click-overlay="onClose" round closeable close-icon="close">
+    <van-popup
+      v-model="showw"
+      @click-overlay="canClose"
+      @close="canClose"
+      round
+      closeable
+      close-icon="close"
+    >
       <div class="gongsucess">
         <div
           class="shangsuche"
@@ -231,7 +252,7 @@ export default {
   methods: {
     goshanghu() {
       this.$router.push({
-        path:"/"
+        path: "/"
       })
     },
     goback() {
@@ -244,9 +265,16 @@ export default {
       this.showw = true
     },
     onClose() {
-      this.show = this.showw = false
+      this.show = false
       this.$router.push({
-        path: "/"
+        path: "/activedui"
+      })
+    },
+    // 参与成功弹出层 点击遮罩层触发
+    canClose() {
+      this.showw = false
+      this.$router.push({
+        path: "/activez"
       })
     }
   }
@@ -488,9 +516,9 @@ export default {
           }
         }
         .shuoming {
+          box-sizing: border-box;
           font-size: 12px;
-          // margin-top: 10px;
-          margin-left: 40px;
+          padding: 5px 10px 5px 60px;
         }
       }
     }

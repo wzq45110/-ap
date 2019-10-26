@@ -75,6 +75,7 @@ export default {
     }
   }
   .baoguoqilai {
+    width: 100%;
     margin-top: 80px;
     .anquuu {
       position: relative;
@@ -96,6 +97,7 @@ export default {
       }
     }
     .phoneren {
+      box-sizing: border-box;
       margin-top: 10px;
       background-color: #fff;
       width: 100%;
