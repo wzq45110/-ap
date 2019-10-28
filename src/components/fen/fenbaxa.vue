@@ -70,7 +70,7 @@
             </div>
           </div>
           <!-- 身 -->
-          <div class="dianrei">
+          <div class="dianrei" @click="guzbjsguu">
             <div class="zuodinzhi">
               <div>
                 肯德基(西乡店)
@@ -268,6 +268,11 @@ export default {
       this.show = false
       this.$router.push({
         path: "/activedui"
+      })
+    },
+    guzbjsguu() {
+      this.$router.push({
+        path: "/fenshu"
       })
     },
     // 参与成功弹出层 点击遮罩层触发

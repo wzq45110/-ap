@@ -2,6 +2,9 @@
   <div class="mainsdhanghu">
     <!-- 顶部标题 -->
     <div class="dingtiiti">
+      <div class="fanhuian" @click="goback">
+        <van-icon size="20px" name="arrow-left" />
+      </div>
       <div class="yiuiui">关注</div>
       <div class="dsjfidh">
         <van-icon color="white" size="20px" name="location" />
@@ -94,7 +97,11 @@ export default {
     return {}
   },
   created() {},
-  methods: {}
+  methods: {
+    goback() {
+      this.$router.go(-1)
+    }
+  }
 }
 </script>
 
@@ -111,6 +118,12 @@ export default {
     width: 100%;
     height: 80px;
     top: 0;
+    .fanhuian {
+      position: absolute;
+      top: 50%;
+      color: #fff;
+      left: 10px;
+    }
     .dsjfidh {
       right: 40px;
     }

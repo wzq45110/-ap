@@ -37,19 +37,18 @@
           <!-- 顶 -->
           <div class="caipin">
             <div class="xiaolun">精彩评论</div>
-            <div class="pinlun">
-              写留言
-              <van-icon name="arrow" />
-            </div>
+            <div class="pinlun">写留言</div>
           </div>
           <!-- 内容 -->
-          <div class="writeneijing" v-for="(item,index) in 4" :key="index">
+          <div class="writeneijing" v-for="(item,index) in listpinlunarr" :key="index">
             <div class="shangbanjie">
               <div class="renxiang">
-                <img src="../../assets/images/people.png" alt />
+                <img :src="item.headimgurl" alt />
               </div>
               <div class="youxiangxi">
-                <div style="color:#B0B0B0; font-size:15px;">团队详情及文字说明部分</div>
+                <div
+                  style="color:#B0B0B0; font-size:15px;"
+                >{{item.username}}----{{item.addtime_txt}}</div>
                 <div style="color:#FD7900; font-size:13px;">
                   <van-icon color="#FD7900" name="good-job-o" />
                   <span>228</span>
@@ -57,9 +56,7 @@
               </div>
             </div>
             <!-- 具体内容 -->
-            <div
-              style="font-size:12px; margin-left:50px;"
-            >使用规则~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~讲故事的空间打开洒过的口号是v的</div>
+            <div style="font-size:12px; box-sizing:border-box; padding-left:60px">{{item.content}}</div>
           </div>
         </div>
       </div>
@@ -70,12 +67,34 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      // 存储数据的数组
+      listpinlunarr: []
+    }
   },
-  created() {},
+  created() {
+    // 页面一创建获取评论列表
+    this.getpinlunlist()
+    // 获取评论点赞数
+    this.getpinlunarrt()
+  },
   methods: {
     goback() {
       this.$router.go(-1)
+    },
+    // 发送请求获取评论列表
+    async getpinlunlist() {
+      const { data: res } = await this.$http.get("Cms/topic_lists")
+      console.log(res)
+      if (res.status !== 10001) return this.$toast("加载失败")
+      this.listpinlunarr = res.lists
+    },
+    async getpinlunarrt() {
+      // 获取评论点赞数   -------------- 获取失败 505
+      const { data: res } = await this.$http.get("Cms/bbs_praise", {
+        params: { topic_id: 105 }
+      })
+      console.log(res)
     }
   }
 }
@@ -85,7 +104,7 @@ export default {
 .mainbltter {
   width: 100%;
   height: 100%;
-  position: relative;
+  // position: relative;
   // 标题
   .dingtiiti {
     position: fixed;
@@ -115,60 +134,54 @@ export default {
     }
   }
   .baomiannsh {
-    position: absolute;
+    // position: absolute;
+    box-sizing: border-box;
     width: 100%;
-    top: 80px;
+    margin-top: 80px;
+    padding: 0 10px;
     .titlebete {
-      position: absolute;
-      left: 10px;
-      top: 15px;
-      width: 80%;
+      width: 100%;
       height: 25px;
       font-size: 25px;
       font-weight: 900;
+      margin-top: 20px;
     }
     .yuanchaun {
+      color: #999999;
+      font-size: 15px;
       width: 100%;
-      left: 10px;
-      top: 54px;
+      margin-top: 20px;
     }
-    .yuanchaun,
-    .bushijian {
-      position: absolute;
-      color: #999999;
-      font-size: 15px;
-    }
-    .bookmain,
-    .dibulan {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%);
-      width: 94%;
-      color: #999999;
-      font-size: 15px;
-    }
-
     .bookmain {
+      width: 100%;
+      color: #999999;
+      font-size: 15px;
       height: 300px;
-      top: 90px;
+      margin-top: 20px;
     }
     .bushijian {
-      width: 80%;
-      left: 10px;
-      top: 394px;
+      z-index: 100;
+      color: #999999;
+      font-size: 15px;
+      width: 100%;
+      height: 20px;
+      // background-color: pink;
+      margin-top: 20px;
     }
     .dibulan {
+      width: 100%;
+      color: #999999;
+      font-size: 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #eee;
       height: 50px;
-      top: 410px;
+      margin-top: 20px;
     }
     .zuipin {
-      position: absolute;
-      width: 98%;
-      top: 450px;
+      width: 100%;
+      margin-top: 20px;
       .huawrite {
         width: 100%;
         background-color: #fff;
@@ -178,11 +191,8 @@ export default {
           align-items: center;
           width: 100%;
           height: 50px;
-          .xiaolun {
-            margin-left: 10px;
-          }
           .pinlun {
-            margin-right: 10px;
+            // margin-right: 10px;
             color: #ff7900;
             font-size: 14px;
           }
@@ -191,6 +201,7 @@ export default {
       .writeneijing {
         width: 100%;
         background-color: #fff;
+        margin-top: 10px;
         .shangbanjie {
           display: flex;
           justify-content: space-between;
@@ -198,7 +209,7 @@ export default {
           width: 100%;
           height: 25px;
           .renxiang {
-            margin-left: 10px;
+            // margin-left: 10px;
             width: 30px;
             height: 30px;
             img {
@@ -209,10 +220,10 @@ export default {
           .youxiangxi {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            // align-items: center;
             width: 300px;
             height: 30px;
-            margin-right: 10px;
+            // margin-right: 10px;
           }
         }
       }

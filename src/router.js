@@ -17,7 +17,7 @@ import Activez from './components/active/activez.vue'
 import Activew from './components/active/activew.vue'
 import Activedui from './components/active/activedui.vue'
 import Activedre from './components/active/activedre.vue'
-import Mainac from './components/active/mainac.vue'
+import Mainac from './components/active/mainac'
 import Login from './components/login'
 import Zhuce from './components/zhuce'
 import Forget from './components/forget'
@@ -130,7 +130,7 @@ const router = new Router({
       component: Activedui
     },
     {
-      path: '/mainc',
+      path: '/mainac',
       name: 'mainac',
       component: Mainac
     },

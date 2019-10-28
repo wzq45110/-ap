@@ -183,7 +183,7 @@
                   </div>
                 </div>
                 <!-- 2栏 -->
-                <div class="listquyu" style="top:717px;">
+                <div class="listquyu" style="top:710px">
                   <div class="shangzhe">
                     奖品: MAC 口红任意色号一支
                     <van-icon color="#FF7900" name="cross" />
