@@ -20,7 +20,7 @@
           <img src="../../assets/images/oppo.png" alt />
         </div>麦肯基西乡店
       </div>
-      <div class="logoqu">取消关注</div>
+      <div class="logoqu" @click="guanzuhu">{{pandun ? '关注':'取消关注'}}</div>
     </div>
     <!-- 地址商家烂 -->
     <div class="bazanin">
@@ -94,12 +94,18 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      pandun: false
+    }
   },
   created() {},
   methods: {
     goback() {
       this.$router.go(-1)
+    },
+    // 关注事件
+    guanzuhu() {
+      this.pandun = !this.pandun
     }
   }
 }

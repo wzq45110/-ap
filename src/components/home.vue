@@ -208,6 +208,7 @@ export default {
     // 点击遮罩层 始终隐藏
     chuxialafan() {
       this.flag = false
+      this.flage = !this.flag
     },
     showPopup() {
       this.show = true
@@ -341,7 +342,6 @@ export default {
       height: 50%;
     }
   }
-
   // 轮播图
   .lunbo {
     position: absolute;

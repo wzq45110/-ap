@@ -20,15 +20,22 @@
           <img src="../../assets/images/oppo.png" alt />
         </div>麦肯基西乡店
       </div>
-      <div class="logoqu">取消关注</div>
+      <div class="logoqu" @click="sfdfdsfgf">{{zhahu ? "关注": '取消关注'}}</div>
     </div>
     <div class="gegetiao"></div>
     <!--店详情页面 -->
-    <div class="dianrei" v-for="(item, index) in 6" :key="index">
+    <div class="dianrei" v-for="(item, index) in arrshuzusdf" :key="index">
       <div class="zuodinzhi">
         <div>
           <span style="margin-right:10px">肯德基(西乡店)</span>
-          <van-tag round plain color="#FF7901" text-color="#FF7901" type="warning">+ 关注</van-tag>
+          <van-tag
+            round
+            plain
+            color="#FF7901"
+            text-color="#FF7901"
+            type="warning"
+            @click="panduanzhen"
+          >{{zhenjia ? "+关注": '取消关注'}}</van-tag>
         </div>
         <div style="font-size:12px; color:#717171">深圳市罗湖区文锦路13号楼 3号 一侧吧</div>
         <div style="font-size:10px; color:#ccc">
@@ -47,12 +54,32 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      zhahu: false,
+      // 关注与否
+      zhenjia: true,
+      // 分店列表
+      arrshuzusdf: [
+        { id: 0 },
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
+        { id: 4 },
+        { id: 5 }
+      ]
+    }
   },
   created() {},
   methods: {
     goback() {
       this.$router.go(-1)
+    },
+    // 判断真假
+    panduanzhen() {
+      this.zhenjia = !this.zhenjia
+    },
+    sfdfdsfgf() {
+      this.zhahu = !this.zhahu
     }
   }
 }

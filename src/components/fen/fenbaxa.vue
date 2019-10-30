@@ -70,7 +70,7 @@
             </div>
           </div>
           <!-- 身 -->
-          <div class="dianrei" @click="guzbjsguu">
+          <div class="dianrei">
             <div class="zuodinzhi">
               <div>
                 肯德基(西乡店)
@@ -80,8 +80,8 @@
                   color="#FF7901"
                   text-color="#FF7901"
                   type="warning"
-                  click="goshanghu"
-                >+ 关注</van-tag>
+                  @click="goshanghu"
+                >{{guan ? '+ 关注' : '取消关注'}}</van-tag>
               </div>
               <div style="font-size:12px; color:#717171;">深圳市罗湖区文锦路13号楼 3号 一侧吧</div>
               <div style="font-size:10px; color:#ccc;">
@@ -244,6 +244,8 @@
 export default {
   data() {
     return {
+      // 关注与否
+      guan: true,
       show: false,
       showw: false
     }
@@ -251,9 +253,7 @@ export default {
   created() {},
   methods: {
     goshanghu() {
-      this.$router.push({
-        path: "/"
-      })
+      this.guan = !this.guan
     },
     goback() {
       this.$router.go(-1)
