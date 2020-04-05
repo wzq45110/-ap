@@ -97,61 +97,61 @@ export default {
       // 每日任务内容文字
       jianglist: [
         {
-          test_1: "参与每日或自助抽奖",
-          test_2: "去参与",
-          test_3: "0.3",
-          test_4: "霸气值/次, 日上限",
-          test_5: "3",
-          test_6: "霸气值"
+          test_1: '参与每日或自助抽奖',
+          test_2: '去参与',
+          test_3: '0.3',
+          test_4: '霸气值/次, 日上限',
+          test_5: '3',
+          test_6: '霸气值'
         },
         {
-          test_1: "参与每日或自助抽奖",
-          test_2: "去参与",
-          test_3: "0.3",
-          test_4: "霸气值/次, 日上限",
-          test_5: "3",
-          test_6: "霸气值"
+          test_1: '参与每日或自助抽奖',
+          test_2: '去参与',
+          test_3: '0.3',
+          test_4: '霸气值/次, 日上限',
+          test_5: '3',
+          test_6: '霸气值'
         },
         {
-          test_1: "参与每日或自助抽奖",
-          test_2: "去参与",
-          test_3: "0.3",
-          test_4: "霸气值/次, 日上限",
-          test_5: "3",
-          test_6: "霸气值"
+          test_1: '参与每日或自助抽奖',
+          test_2: '去参与',
+          test_3: '0.3',
+          test_4: '霸气值/次, 日上限',
+          test_5: '3',
+          test_6: '霸气值'
         },
         {
-          test_1: "参与每日或自助抽奖",
-          test_2: "去参与",
-          test_3: "0.3",
-          test_4: "霸气值/次, 日上限",
-          test_5: "3",
-          test_6: "霸气值"
+          test_1: '参与每日或自助抽奖',
+          test_2: '去参与',
+          test_3: '0.3',
+          test_4: '霸气值/次, 日上限',
+          test_5: '3',
+          test_6: '霸气值'
         }
       ],
       // 新手任务内容文字
       xinlist: [
         {
-          testt_1: "下载App",
-          testt_2: "50",
-          testt_3: "霸气值",
-          testt_4: "去下载"
+          testt_1: '下载App',
+          testt_2: '50',
+          testt_3: '霸气值',
+          testt_4: '去下载'
         },
         {
-          testt_1: "下载App",
-          testt_2: "50",
-          testt_3: "霸气值",
-          testt_4: "去下载"
+          testt_1: '下载App',
+          testt_2: '50',
+          testt_3: '霸气值',
+          testt_4: '去下载'
         },
         {
-          testt_1: "下载App",
-          testt_2: "50",
-          testt_3: "霸气值",
-          testt_4: "去下载"
+          testt_1: '下载App',
+          testt_2: '50',
+          testt_3: '霸气值',
+          testt_4: '去下载'
         }
       ],
       checked: false,
-      //霸气总值 和今日值 存储
+      // 霸气总值 和今日值 存储
       objpoint: {}
     }
   },
@@ -163,11 +163,11 @@ export default {
     gobackkk() {
       this.$router.go(-1)
     },
-    //调用户霸气值数据
+    // 调用户霸气值数据
     async getbaqiuzhi() {
-      const { data: res } = await this.$http.get("UserPoint/detail")
+      const { data: res } = await this.$http.get('UserPoint/detail')
       console.log(res)
-      if (res.status !== 10001) return this.$toast("获取数据失败")
+      if (res.status !== 10001) return this.$toast('获取数据失败')
       this.objpoint = res.detail
     }
   }

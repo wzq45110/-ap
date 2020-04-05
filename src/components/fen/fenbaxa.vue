@@ -267,19 +267,19 @@ export default {
     onClose() {
       this.show = false
       this.$router.push({
-        path: "/activedui"
+        path: '/activedui'
       })
     },
     guzbjsguu() {
       this.$router.push({
-        path: "/fenshu"
+        path: '/fenshu'
       })
     },
     // 参与成功弹出层 点击遮罩层触发
     canClose() {
       this.showw = false
       this.$router.push({
-        path: "/activez"
+        path: '/activez'
       })
     }
   }

@@ -41,11 +41,11 @@ export default {
       this.$router.go(-1)
     },
     async getinfoshu() {
-      const { data: res } = await this.$http.get("Cms/detail", {
+      const { data: res } = await this.$http.get('Cms/detail', {
         params: { id: 5 }
       })
       console.log(res)
-      if (res.status !== 10001) return this.$toast("获取数据失败！")
+      if (res.status !== 10001) return this.$toast('获取数据失败！')
       this.objshuju = res.detail
     }
   }

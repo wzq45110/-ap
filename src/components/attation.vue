@@ -152,17 +152,17 @@ export default {
   methods: {
     gohomre() {
       this.$router.push({
-        path: "/home"
+        path: '/home'
       })
     },
     gofendianye() {
       this.$router.push({
-        path: "/fenshu"
+        path: '/fenshu'
       })
     },
     gobxiang() {
       this.$router.push({
-        path: "/fenbaxa"
+        path: '/fenbaxa'
       })
     }
   }

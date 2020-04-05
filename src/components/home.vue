@@ -21,18 +21,18 @@
     <!-- 轮播图区域 -->
     <div class="lunbo">
       <van-swipe :autoplay="3000" indicator-color="#1989fa">
-        <van-swipe-item v-for="(item,index) in arrold" :key="index">
-          <img :src="item.img_thumb" alt />
-        </van-swipe-item>
-        <!-- <van-swipe-item>
-          <img src="guanggaolist[1].img_orogin" alt />
-        </van-swipe-item>
-        <van-swipe-item>
-          <img src="guanggaolist[2].img_orogin" alt />
-        </van-swipe-item>
-        <van-swipe-item>
-          <img src="guanggaolist[3].img_orogin" alt />
+        <!-- <van-swipe-item v-for="(item,index) in guanggaolist" :key="index">
+          <img src="item.img_orogin" alt />
         </van-swipe-item>-->
+        <van-swipe-item>
+          <img src="../assets/images/swip.png" alt />
+        </van-swipe-item>
+        <van-swipe-item>
+          <img src="../assets/images/swip.png" alt />
+        </van-swipe-item>
+        <van-swipe-item>
+          <img src="../assets/images/swip.png" alt />
+        </van-swipe-item>
       </van-swipe>
     </div>
     <!-- 内容区域 -->
@@ -179,11 +179,7 @@ export default {
       flag: false,
       // show: false,
       active: 0,
-      mainaxrelist: [
-        { image_src: "../assets/images/logoo1_02.png" },
-        { image_src: "../assets/images/logoo_02.png" },
-        { image_src: "../assets/images/logoo_02.png" }
-      ],
+      mainaxrelist: [{ image_src: '../assets/images/logoo1_02.png' }, { image_src: '../assets/images/logoo_02.png' }, { image_src: '../assets/images/logoo_02.png' }],
       // 获取首页广告
       arrold: [],
       arrnew: []
@@ -197,7 +193,7 @@ export default {
     // 跳转到内容页面
     gocontent() {
       this.$router.push({
-        path: "/mainac"
+        path: '/mainac'
       })
     },
     // 点击地址按妞 出现全屏下拉和遮罩层
@@ -215,18 +211,18 @@ export default {
     },
     getContainer() {
       // 返回一个特定的 DOM 节点，作为挂载的父节点
-      return document.querySelector(".lunbo")
+      return document.querySelector('.lunbo')
     },
     gobxiang() {
       this.$router.push({
-        path: "/fenbaxa"
+        path: '/fenbaxa'
       })
     },
     // 请求首页广告位广告 (图片不显示)
     async getpic() {
-      const { data: res } = await this.$http.get("Ad/lists")
+      const { data: res } = await this.$http.get('Ad/lists')
       console.log(res)
-      if (res.status !== 10001) return this.$toast("获取列表失败")
+      if (res.status !== 10001) return this.$toast('获取列表失败')
       // this.guanggaolist = res.lists
       let newedui = {
         item: 4,
@@ -237,12 +233,7 @@ export default {
       let arrold = []
       let arrnew = []
       for (let i = 0; i < res.lists.length; i++) {
-        if (
-          i != newedui.item &&
-          i != newedui.item1 &&
-          i != newedui.item2 &&
-          i != newedui.item3
-        ) {
+        if (i !== newedui.item && i !== newedui.item1 && i !== newedui.item2 && i !== newedui.item3) {
           arrnew.push(res.lists[i])
         } else {
           arrold.push(res.lists[i])

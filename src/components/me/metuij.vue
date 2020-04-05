@@ -123,28 +123,28 @@ export default {
     return {
       wenzilist: [
         {
-          imgurl_1: "../../assets/images/wx.png",
-          test_2: "接受邀请--邀请成功",
-          test_3: "2019-06-7 12:15:01",
-          test_4: "获得20霸气值"
+          imgurl_1: '../../assets/images/wx.png',
+          test_2: '接受邀请--邀请成功',
+          test_3: '2019-06-7 12:15:01',
+          test_4: '获得20霸气值'
         },
         {
-          imgurl_1: "../../assets/images/wx.png",
-          test_2: "接受邀请--邀请成功",
-          test_3: "2019-06-7 12:15:01",
-          test_4: "获得20霸气值"
+          imgurl_1: '../../assets/images/wx.png',
+          test_2: '接受邀请--邀请成功',
+          test_3: '2019-06-7 12:15:01',
+          test_4: '获得20霸气值'
         },
         {
-          imgurl_1: "../../assets/images/wx.png",
-          test_2: "接受邀请--邀请成功",
-          test_3: "2019-06-7 12:15:01",
-          test_4: "获得20霸气值"
+          imgurl_1: '../../assets/images/wx.png',
+          test_2: '接受邀请--邀请成功',
+          test_3: '2019-06-7 12:15:01',
+          test_4: '获得20霸气值'
         },
         {
-          imgurl_1: "../../assets/images/wx.png",
-          test_2: "接受邀请--邀请成功",
-          test_3: "2019-06-7 12:15:01",
-          test_4: "获得20霸气值"
+          imgurl_1: '../../assets/images/wx.png',
+          test_2: '接受邀请--邀请成功',
+          test_3: '2019-06-7 12:15:01',
+          test_4: '获得20霸气值'
         }
       ]
     }

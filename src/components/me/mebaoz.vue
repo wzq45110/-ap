@@ -35,12 +35,7 @@
 export default {
   data() {
     return {
-      xainglist: [
-        { test: "去看看", yanse: "/fenbaxa" },
-        { test: "去看看", yanse: "/fenbaxa" },
-        { test: "已开奖", yanse: "" },
-        { test: "已开奖", yanse: "" }
-      ]
+      xainglist: [{ test: '去看看', yanse: '/fenbaxa' }, { test: '去看看', yanse: '/fenbaxa' }, { test: '已开奖', yanse: '' }, { test: '已开奖', yanse: '' }]
     }
   },
   created() {},

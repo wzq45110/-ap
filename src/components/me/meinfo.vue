@@ -59,7 +59,7 @@
 export default {
   data() {
     return {
-      //存放数据
+      // 存放数据
       userobj: {}
     }
   },
@@ -80,21 +80,21 @@ export default {
       // console.log(this.userobj)
 
       // 取出token
-      let trs = window.sessionStorage.getItem("token")
+      let trs = window.sessionStorage.getItem('token')
       // 获取个人信息要携带token 值
-      const { data: res } = await this.$http.get("User/detail", {
+      const { data: res } = await this.$http.get('User/detail', {
         params: { token: trs }
       })
       console.log(res)
-      if (res.status !== 10001) return this.$toast("获取用户数据失败")
+      if (res.status !== 10001) return this.$toast('获取用户数据失败')
       this.userobj = res.detail
     },
     // 推出登陆
     tuichu() {
       // 要清除本地token值
-      window.sessionStorage.removeItem("token")
+      window.sessionStorage.removeItem('token')
       this.$router.push({
-        path: "/"
+        path: '/'
       })
     }
   }

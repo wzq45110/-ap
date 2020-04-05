@@ -290,7 +290,7 @@ export default {
   methods: {
     goshanghu() {
       this.$router.push({
-        path: "/"
+        path: '/'
       })
     },
     goback() {
@@ -305,7 +305,7 @@ export default {
     onClose() {
       this.show = this.showw = false
       this.$router.push({
-        path: "/"
+        path: '/'
       })
     }
   }

@@ -84,14 +84,14 @@ export default {
     },
     // 发送请求获取评论列表
     async getpinlunlist() {
-      const { data: res } = await this.$http.get("Cms/topic_lists")
+      const { data: res } = await this.$http.get('Cms/topic_lists')
       console.log(res)
-      if (res.status !== 10001) return this.$toast("加载失败")
+      if (res.status !== 10001) return this.$toast('加载失败')
       this.listpinlunarr = res.lists
     },
     async getpinlunarrt() {
       // 获取评论点赞数   -------------- 获取失败 505
-      const { data: res } = await this.$http.get("Cms/bbs_praise", {
+      const { data: res } = await this.$http.get('Cms/bbs_praise', {
         params: { topic_id: 105 }
       })
       console.log(res)

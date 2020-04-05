@@ -287,7 +287,7 @@ export default {
   methods: {
     goshanghu() {
       this.$router.push({
-        path: "/"
+        path: '/'
       })
     },
     goback() {

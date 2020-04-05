@@ -89,16 +89,16 @@ export default {
       // 用户输入手机号
       infoiphone: {
         // 即账号
-        phone: "",
+        phone: '',
         // 验证码 number
-        type: ""
+        type: ''
       },
       // 密码
-      possword: "",
+      possword: '',
       // 新密码
-      newpossword: "",
+      newpossword: '',
       // 获取验证码的code值
-      code: ""
+      code: ''
     }
   },
   created() {
@@ -110,22 +110,17 @@ export default {
     },
     shiqujiao() {
       if (!(this.possword === this.newpossword)) {
-        return this.$toast("两次密码不同")
+        return this.$toast('两次密码不同')
       }
     },
     // 去条款页面
     gohomenei() {
       this.$router.push({
-        path: "/sertiao"
+        path: '/sertiao'
       })
     },
     sdosdj() {
-      if (
-        this.infoiphone.phone === "" ||
-        this.infoiphone.type === "" ||
-        this.possword === "" ||
-        this.newpossword === ""
-      ) {
+      if (this.infoiphone.phone === '' || this.infoiphone.type === '' || this.possword === '' || this.newpossword === '') {
         return (this.checked = false)
       }
     },
@@ -134,22 +129,19 @@ export default {
       // let post = {
       //   phone: this.phone
       // }
-      const { data: res } = await this.$http.post(
-        "Code/get_code",
-        this.infoiphone
-      )
+      const { data: res } = await this.$http.post('Code/get_code', this.infoiphone)
       console.log(res)
-      if (res.status !== 10001) return this.$toast.fail("获取失败")
+      if (res.status !== 10001) return this.$toast.fail('获取失败')
       // 发送成功之后
       console.log(res.arr.url)
-      let urlarr = res.arr.url.split("=")
+      let urlarr = res.arr.url.split('=')
       // 验证码提取赋值
       this.code = urlarr[6]
-        .split("&")[0]
-        .split(":")[1]
+        .split('&')[0]
+        .split(':')[1]
         .substring(0, 6)
     },
-    //点击注册账号 发起请求 (此段还未完成 邀请码不知道多少)
+    // 点击注册账号 发起请求 (此段还未完成 邀请码不知道多少)
     async zhuceuse() {
       let post = {
         loginname: this.infoiphone.phone,
@@ -157,7 +149,7 @@ export default {
         re_password: this.newpossword,
         code: this.code
       }
-      const { data: res } = await this.$http.post("Reg/reg", {
+      const { data: res } = await this.$http.post('Reg/reg', {
         post: JSON.stringify(post)
       })
       console.log(res)

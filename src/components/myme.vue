@@ -10,7 +10,7 @@
         <div class="picnei">
           <img :src="getuserinforobj.headimgurl" alt />
         </div>
-        <div style="color:white; text-align: center;" class="ziti">{{getuserinforobj.username}}</div>
+        <div style="color: white; text-align: center;" class="ziti">{{ getuserinforobj.username }}</div>
       </div>
       <div class="rightpeo" @click="goinfo(getuserinforobj)">
         <div>个人资料</div>
@@ -23,8 +23,8 @@
     <div class="carlan">
       <div class="zhuwen" v-for="(item, index) in daolist" :key="index">
         <router-link :to="item.url_to">
-          <div style="color:orange; font-size:30px; font-weight:bold;">{{item.number_i}}</div>
-          <div style="color:#999999;">{{item.test}}</div>
+          <div style="color: orange; font-size: 30px; font-weight: bold;">{{ item.number_i }}</div>
+          <div style="color: #999999;">{{ item.test }}</div>
         </router-link>
       </div>
     </div>
@@ -35,12 +35,17 @@
           <div class="sfjoi">
             <van-icon size="20" color="#FF7900" name="add" />
           </div>
-          <span style="margin-left:5px;">霸气值</span>
+          <span style="margin-left: 5px;">霸气值</span>
         </div>
         <div class="rightme">
           <span
-            style="font-size:20px;font-weight:900;color:#FF7900; margin-right:5px;"
-          >{{getuserinforobj.points}}</span>
+            style="
+              font-size: 20px;
+              font-weight: 900;
+              color: #ff7900;
+              margin-right: 5px;
+            "
+          >{{ getuserinforobj.points }}</span>
           <div class="tuba">
             <van-icon size="20" name="arrow" />
           </div>
@@ -64,27 +69,39 @@
           <div class="sfjoi">
             <van-icon size="20" color="#48AFDC" name="graphic" />
           </div>
-          <span style="margin-left:5px;">官方APP/公众号/小程序</span>
+          <span style="margin-left: 5px;">官方APP/公众号/小程序</span>
         </div>
         <div class="rightme">
           <span
-            style="font-size:15px;font-weight:503px;color:#FF7900; margin-right:5px; margin-top:2px;"
+            style="
+              font-size: 15px;
+              font-weight: 503px;
+              color: #ff7900;
+              margin-right: 5px;
+              margin-top: 2px;
+            "
           ></span>
           <div class="tuba">
             <van-icon size="20" name="arrow" />
           </div>
         </div>
       </div>
-      <div class="asdkadk" style="margin-top:10px">
+      <div class="asdkadk" style="margin-top: 10px;">
         <div class="leftme">
           <div class="sfjoi">
             <van-icon size="20" color="#01C80A" name="chat" />
           </div>
-          <span style="margin-left:5px;">官方微信(关注不迷路)</span>
+          <span style="margin-left: 5px;">官方微信(关注不迷路)</span>
         </div>
         <div class="rightme">
           <span
-            style="font-size:15px;font-weight:350px;color:#FF7900; margin-right:5px; margin-top:2px;"
+            style="
+              font-size: 15px;
+              font-weight: 350px;
+              color: #ff7900;
+              margin-right: 5px;
+              margin-top: 2px;
+            "
           ></span>
           <div class="tuba">
             <van-icon size="20" name="arrow" />
@@ -92,16 +109,22 @@
         </div>
       </div>
 
-      <div class="asdkadk" style="margin-top:10px" @click="gotuijian">
+      <div class="asdkadk" style="margin-top: 10px;" @click="gotuijian">
         <div class="leftme">
           <div class="sfjoi">
             <van-icon size="20" color="#FF7900" name="gold-coin" />
           </div>
-          <span style="margin-left:5px;">推荐有奖</span>
+          <span style="margin-left: 5px;">推荐有奖</span>
         </div>
         <div class="rightme">
           <span
-            style="font-size:15px;font-weight:700;color:#FF7900; margin-right:5px; margin-top:2px;"
+            style="
+              font-size: 15px;
+              font-weight: 700;
+              color: #ff7900;
+              margin-right: 5px;
+              margin-top: 2px;
+            "
           ></span>
           <div class="tuba">
             <van-icon size="20" name="arrow" />
@@ -114,11 +137,17 @@
           <div class="sfjoi">
             <van-icon size="20" color="#48AFDC" name="more" />
           </div>
-          <span style="margin-left:5px;">关于霸王到</span>
+          <span style="margin-left: 5px;">关于霸王到</span>
         </div>
         <div class="rightme">
           <span
-            style="font-size:15px;font-weight:700;color:#FF7900; margin-right:5px; margin-top:2px;"
+            style="
+              font-size: 15px;
+              font-weight: 700;
+              color: #ff7900;
+              margin-right: 5px;
+              margin-top: 2px;
+            "
           ></span>
           <div class="tuba">
             <van-icon size="20" name="arrow" />
@@ -146,11 +175,7 @@ export default {
       active: 2,
       // 接受获取过来的对象
       getuserinforobj: {},
-      daolist: [
-        { number_i: "", test: "我的保中", url_to: "/mebaoz" },
-        { number_i: "", test: "我参与的", url_to: "" },
-        { number_i: "", test: "中奖纪录", url_to: "" }
-      ]
+      daolist: [{ number_i: '', test: ' 我的保中 ', url_to: '/mebaoz' }, { number_i: '', test: '我参与的', url_to: '' }, { number_i: '', test: '中奖纪录', url_to: '' }]
     }
   },
   created() {
@@ -162,13 +187,13 @@ export default {
   methods: {
     gohomre() {
       this.$router.push({
-        path: "/home"
+        path: '/home'
       })
     },
     // 跳转并且传值 (个人信息)
     goinfo(val) {
       this.$router.push({
-        path: "/meinfo"
+        path: '/meinfo'
         // name: "meinfo",
         // params: {
         //   userinfo: val
@@ -177,28 +202,28 @@ export default {
     },
     gobaqizhi() {
       this.$router.push({
-        path: "/mebaqi"
+        path: '/mebaqi'
       })
     },
     gotuijian() {
       this.$router.push({
-        path: "/metuij"
+        path: '/metuij'
       })
     },
     goabout() {
       this.$router.push({
-        path: "/about"
+        path: '/about'
       })
     },
     // 保中 参与 中奖 接口 返回
     async lokkeruser() {
       // 取出token
-      let trs = window.sessionStorage.getItem("token")
-      const { data: res } = await this.$http.post("LotteryUser/detail", {
+      let trs = window.sessionStorage.getItem('token')
+      const { data: res } = await this.$http.post('LotteryUser/detail', {
         params: { token: trs }
       })
-      console.log("-----", res)
-      if (res.status !== 10001) return this.$toast("获取用户数据失败")
+      console.log('-----', res)
+      if (res.status !== 10001) return this.$toast('获取用户数据失败')
       this.daolist[0].number_i = res.detail.baozhong
       this.daolist[1].number_i = res.detail.partake_num
       this.daolist[2].number_i = res.detail.win_num
@@ -207,13 +232,13 @@ export default {
     // 获取用户详情信息
     async getuserinfor() {
       // 取出token
-      let trs = window.sessionStorage.getItem("token")
+      let trs = window.sessionStorage.getItem('token')
       // 获取个人信息要携带token 值
-      const { data: res } = await this.$http.get("User/detail", {
+      const { data: res } = await this.$http.get('User/detail', {
         params: { token: trs }
       })
       console.log(res)
-      if (res.status !== 10001) return this.$toast("获取用户数据失败")
+      if (res.status !== 10001) return this.$toast('获取用户数据失败')
       this.getuserinforobj = res.detail
       // // 将获取到的用户数据存储在本地 供个人资料页面用
       // window.sessionStorage.setItem("userinfo", res.detail)
@@ -222,7 +247,7 @@ export default {
 }
 </script>
 
-<style lang='less' scoped>
+<style lang="less" scoped>
 .mymain {
   // background-color: pink;
   width: 100%;

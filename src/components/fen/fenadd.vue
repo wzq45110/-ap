@@ -47,38 +47,40 @@
           value="110101"
           @confirm="onAddrConfirm"
           @cancel="quxiao"
-        />
+        ></van-area>
       </div>
     </van-popup>
   </div>
 </template>
 
 <script>
-import areaList from "../../assets/js/area"
+import areaList from '../../assets/js/area'
 export default {
-  //引入地区组件 是个对象
-  components: { areaList },
+  // 引入地区组件 是个对象
+  components: {
+    vanArea: areaList
+  },
   data() {
     return {
       checked: false,
-      //数据省市区
+      // 数据省市区
       areaList: null,
       // 是否显示
       show: false,
       // 用户
-      username: "",
+      username: '',
       // 手机号
-      phone: "",
+      phone: '',
       // 地区
-      city: "",
+      city: '',
       // 详细地址
-      details: "",
+      details: '',
       // 省id
-      province: "",
+      province: '',
       // 市id
-      shi: "",
+      shi: '',
       // 区id
-      district: ""
+      district: ''
     }
   },
   created() {
@@ -92,7 +94,7 @@ export default {
     onAddrConfirm(e) {
       // 点击确认，获取所选的省市区数据
       // 确定选择,返回的必定是三元素数组
-      console.log("this.onAddrConfirm=>e", e)
+      console.log('this.onAddrConfirm=>e', e)
       this.province = e[0].name
       this.shi = e[1].name
       this.district = e[2].name
@@ -118,8 +120,8 @@ export default {
     // 点击保存按钮时 要发起请求 把数据上传  而且同时要跳转到收货地址页面
     async baocun() {
       // 发送请求
-      let tozhi = window.sessionStorage.getItem("token")
-      const { data: res } = await this.$http.post("UserAddress/add", {
+      let tozhi = window.sessionStorage.getItem('token')
+      const { data: res } = await this.$http.post('UserAddress/add', {
         post: {
           province: this.province,
           city: this.shi,
@@ -132,10 +134,10 @@ export default {
         }
       })
       console.log(res)
-      if (res.status !== 10001) return this.$toast("保存失败！")
-      this.$toast("保存成功")
+      if (res.status !== 10001) return this.$toast('保存失败！')
+      this.$toast('保存成功')
       this.$router.push({
-        path: "/fensou"
+        path: '/fensou'
       })
     }
   }

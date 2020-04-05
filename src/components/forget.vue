@@ -61,17 +61,17 @@ export default {
   data() {
     return {
       // 发送短信type值
-      type: "",
+      type: '',
       // 用户手机号
-      loginname: "",
+      loginname: '',
       // 新密码
-      newpassword: "",
+      newpassword: '',
       // 确认新密码
-      regnewpassword: "",
+      regnewpassword: '',
       // code验证码
-      code: "",
+      code: '',
       // codeid唯一值
-      codeid: ""
+      codeid: ''
     }
   },
   created() {},
@@ -79,12 +79,12 @@ export default {
   methods: {
     godeng() {
       this.$router.push({
-        path: "/login"
+        path: '/login'
       })
     },
     shiqujiao() {
       if (!(this.newpassword === this.regnewpassword)) {
-        return this.$toast("两次密码不同")
+        return this.$toast('两次密码不同')
       }
     },
     // 触发获取短信 调用接口
@@ -92,23 +92,23 @@ export default {
       // let post = {
       //   phone: this.phone
       // }
-      const { data: res } = await this.$http.post("Code/get_code", {
+      const { data: res } = await this.$http.post('Code/get_code', {
         phone: this.loginname,
         type: this.type
       })
       console.log(res)
-      if (res.status !== 10001) return this.$toast.fail("获取失败")
+      if (res.status !== 10001) return this.$toast.fail('获取失败')
       // 发送成功之后
       console.log(res.arr.url)
-      let urlarr = res.arr.url.split("=")
+      let urlarr = res.arr.url.split('=')
       // 验证码提取赋值
       this.code = urlarr[6]
-        .split("&")[0]
-        .split(":")[1]
+        .split('&')[0]
+        .split(':')[1]
         .substring(0, 6)
       this.codeid = res.code_id
     },
-    //点击确认修改 发起请求(请求显示验证码无效)
+    // 点击确认修改 发起请求(请求显示验证码无效)
     async zhuceuse() {
       let post = {
         loginname: this.loginname,
@@ -119,7 +119,7 @@ export default {
       }
       // 获取token
       // let tokenStr = window.sessionStorage.getItem("token")
-      const { data: res } = await this.$http.post("Login/reget_password", {
+      const { data: res } = await this.$http.post('Login/reget_password', {
         post: JSON.stringify(post),
         code_id: this.codeid
       })
